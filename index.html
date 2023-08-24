@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cors</title>
+</head>
+<body>
+    <h1 id="sound"></h1>
+    <input id ="name" type="text">
+    <button onclick="getSound()">API 요청</button>
+    <script>
+        function getSound() {
+            const name = document.getElementById('name').value // input에 입력한 value를 받아서 name에 저장
+            fetch(`http://localhost:3000/sound/${name}`)   // 외우지 말고 복붙
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.sound) // 키로 접근해서 value를 가져옴
+                document.getElementById('sound').innerHTML = data.sound
+            }); // 결과를 받아서 h1태그에 넣어줌
+        }
+    </script>
+</body>
+</html>
